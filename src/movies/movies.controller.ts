@@ -1,5 +1,3 @@
-import { UpdateMovieDto } from './dto/update-movie.dto';
-import { CreateMovieDto } from './dto/create-movie.dto';
 import {
   Body,
   Controller,
@@ -8,8 +6,9 @@ import {
   Param,
   Patch,
   Post,
-  Query,
 } from '@nestjs/common';
+import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 import { Movie } from './entities/Movie.entity';
 import { MoviesService } from './movies.service';
 
@@ -17,7 +16,7 @@ import { MoviesService } from './movies.service';
 export class MoviesController {
   constructor(readonly MoviesService: MoviesService) {}
   @Get()
-  getAll() {
+  getAll(): Movie[] {
     return this.MoviesService.getAll();
   }
 
